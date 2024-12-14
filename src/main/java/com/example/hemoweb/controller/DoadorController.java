@@ -74,7 +74,8 @@ public class DoadorController {
     }
 
     @PostMapping("/abriralterar")
-    public String abrirAlterar(Doador doador) {
+    public String abrirAlterar(Doador doador, Model model) {
+        model.addAttribute("doador", doador);
         return "doadores/alterar";
     }
 
@@ -91,7 +92,8 @@ public class DoadorController {
     }
 
     @PostMapping("/confirmarremocao")
-    public String confirmarRemocao(Doador doador) {
+    public String confirmarRemocao(Doador doador, Model model) {
+        model.addAttribute("doador", doador);
         return "doadores/confirmarremocao";
     }
 
