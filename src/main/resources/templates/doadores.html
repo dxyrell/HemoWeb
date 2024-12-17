@@ -62,30 +62,59 @@
     <dialog id="addModal" class="w-96 p-6 bg-white rounded-md shadow-lg">
         <h2 class="text-xl font-bold mb-4 text-gray-800 text-center">Adicionar Novo Doador</h2>
         <form id="addForm" class="flex flex-col gap-4">
-            <input type="text" placeholder="CPF" 
+            <input type="text" id="cpfInput" placeholder="CPF" 
                 class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
-            <input type="text" placeholder="Nome" 
+            <input type="text" id="nomeInput" placeholder="Nome" 
                 class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
-            <input type="email" placeholder="E-mail" 
+            <input type="email" id="emailInput"  placeholder="E-mail" 
                 class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
-            <input type="text" placeholder="Telefone" 
+            <input type="text" id="telefoneInput" placeholder="Telefone" 
                 class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
-            <input type="text" placeholder="Endereço" 
+            <input type="text" id="enderecoInput" placeholder="Endereço" 
                 class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
-            <input type="date" placeholder="Data de Nascimento" 
+            <input type="date" id="nascimentoInput" placeholder="Data de Nascimento" 
                 class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
-            <input type="text" placeholder="Tipo Sanguíneo" 
+            <input type="text" id="tipoSanguineoInput" placeholder="Tipo Sanguíneo" 
                 class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
         </form>
         <div class="flex justify-center gap-4 mt-4">
-            <button
-                class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition">
-                Cancelar
-            </button>
-            <button onclick="fecharModal('add')" 
-                class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition">
-                Adicionar
-            </button>
+            <button onclick="adicionarDoador()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition">Adicionar</button>
+            <button onclick="fecharModal('add')" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition">Cancelar</button>
+        </div>
+    </dialog>
+
+    <dialog id="editModal" class="w-96 p-6 bg-white rounded-md shadow-lg">
+        <h2 class="text-xl font-bold mb-4 text-gray-800 text-center">Editar Doador</h2>
+        <form id="addForm" class="flex flex-col gap-4">
+            <input type="text" id="editCpfInput" placeholder="CPF" 
+                class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <input type="text" id="editNomeInput" placeholder="Nome" 
+                class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <input type="email" id="editEmailInput"  placeholder="E-mail" 
+                class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <input type="text" id="editTelefoneInput" placeholder="Telefone" 
+                class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <input type="text" id="editEnderecoInput" placeholder="Endereço" 
+                class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <input type="date" id="editNascimentoInput" placeholder="Data de Nascimento" 
+                class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <input type="text" id="editTipoSanguineoInput" placeholder="Tipo Sanguíneo" 
+                class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+        </form>
+        <div class="flex justify-center gap-4 mt-4">
+            <button onclick="editarDoador()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition">Editar</button>
+            <button onclick="fecharModal('edit')" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition">Cancelar</button>
+        </div>
+    </dialog>
+
+    <dialog id="deleteModal" class="w-96 p-6 bg-white rounded-md shadow-lg">
+        <h2 class="text-xl font-bold mb-4 text-gray-800 text-center">Remover Doador</h2>
+        <form id="deleteForm" class="flex flex-col gap-4">
+            <input type="text" id="deleteCpfInput" placeholder="CPF do Doador" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+        </form>
+        <div class="flex justify-center gap-4 mt-4">
+            <button onclick="deletarDoador()" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition">Remover</button>
+            <button onclick="fecharModal('delete')" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded transition">Cancelar</button>
         </div>
     </dialog>
 

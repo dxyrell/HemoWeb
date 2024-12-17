@@ -21,7 +21,7 @@ CREATE TABLE doadores (
 -- Criação da tabela de bolsas de sangue
 CREATE TABLE bolsas (
     id SERIAL PRIMARY KEY,
-    status BOOLEAN NOT NULL,
+    status TEXT NOT NULL,
     data TEXT NOT NULL,
     volume FLOAT NOT NULL,
     local TEXT NOT NULL,
@@ -44,11 +44,3 @@ INSERT INTO doadores (cpf, nome, email, telefone, endereco, nascimento, tipo_san
 (33333333333, 'Carlos Pereira', 'carlos.pereira@example.com', '31999999999', 'Rua C, 789', '1975-12-20', 'B+'),
 (44444444444, 'Ana Souza', 'ana.souza@example.com', '41999999999', 'Rua D, 101', '1980-07-25', 'AB+'),
 (55555555555, 'Pedro Gomes', 'pedro.gomes@example.com', '51999999999', 'Rua E, 202', '1995-03-30', 'O-');
-
--- Inserção de registros na tabela de bolsas de sangue
-INSERT INTO bolsas (status, data, volume, local, cpf_doador) VALUES 
-(true, '2024-01-10', 450.0, 'Hospital Central', 11111111111),
-(false, '2024-02-15', 350.0, 'Posto de Saúde', 22222222222),
-(true, '2024-03-20', 500.0, 'Banco de Sangue', 33333333333),
-(false, '2024-04-25', 400.0, 'Hospital Regional', 44444444444),
-(true, '2024-05-30', 450.0, 'Clínica Médica', 55555555555);

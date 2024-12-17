@@ -11,8 +11,8 @@ public class Bolsa {
     @Column(name = "id", nullable = false, unique = true)
     private Integer id; // ID único da bolsa
 
-    @Column(name = "status", nullable = false)
-    private Boolean status;
+    @Column(name = "status", nullable = false, length = 100)
+    private String status;
 
     @Column(name = "data", nullable = false, length = 10)
     private String data; // Formato esperado: "yyyy-MM-dd"
@@ -36,11 +36,11 @@ public class Bolsa {
         this.id = id;
     }
 
-    public Boolean getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

@@ -13,7 +13,7 @@
     <tbody>
         <tr th:each="bolsa : ${bolsas}" class="hover:bg-gray-500 odd:bg-gray-100 text-gray-800">
             <td th:text="${bolsa.id}" class="px-4 py-2 text-center border-b border-gray-300"></td>
-            <td th:text="${bolsa.status ? 'Disponível' : 'Indisponível'}" class="px-4 py-2 text-center border-b border-gray-300"></td>
+            <td th:text="${bolsa.status}" class="px-4 py-2 text-center border-b border-gray-300"></td>
             <td th:text="${bolsa.data}" class="px-4 py-2 text-center border-b border-gray-300"></td>
             <td th:text="${bolsa.volume}" class="px-4 py-2 text-center border-b border-gray-300"></td>
             <td th:text="${bolsa.local}" class="px-4 py-2 text-center border-b border-gray-300"></td>

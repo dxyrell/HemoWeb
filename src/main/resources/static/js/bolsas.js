@@ -20,7 +20,7 @@ async function adicionarBolsa() {
     // Captura os dados do formulário de adição
     const data = {
         id: document.querySelector("#idInput").value,
-        status: document.querySelector("#statusInput").checked,
+        status: document.querySelector("#statusInput").value,
         data: document.querySelector("#dataInput").value,
         volume: parseFloat(document.querySelector("#volumeInput").value),
         local: document.querySelector("#localInput").value,
@@ -67,7 +67,7 @@ async function deletarBolsa() {
 async function editarBolsa() {
     const id = document.querySelector("#editIdInput").value;
     const data = {
-        status: document.querySelector("#editStatusInput").checked,
+        status: document.querySelector("#editStatusInput").value,
         data: document.querySelector("#editDataInput").value,
         volume: parseFloat(document.querySelector("#editVolumeInput").value),
         local: document.querySelector("#editLocalInput").value,

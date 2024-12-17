@@ -60,26 +60,58 @@
     <dialog id="addModal" class="w-96 p-6 bg-white rounded-md shadow-lg">
         <h2 class="text-xl font-bold mb-4 text-gray-800 text-center">Adicionar Nova Bolsa</h2>
         <form id="addForm" class="flex flex-col gap-4">
-            <input type="date" placeholder="Data" 
+            <input type="text" id="idInput" placeholder="ID" 
                 class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
-            <input type="text" placeholder="Volume (ml)" 
+            <input type="text" id="statusInput" placeholder="Status (Válida ou Inválida)" 
                 class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
-            <input type="text" placeholder="Local de Coleta" 
+            <input type="date" id="dataInput" placeholder="Data" 
                 class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
-            <input type="text" placeholder="CPF do Doador" 
+            <input type="text" id="volumeInput" placeholder="Volume (ml)" 
+                class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <input type="text" id="localInput" placeholder="Local de Coleta" 
+                class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <input type="text" id="cpfDoadorInput" placeholder="CPF do Doador" 
                 class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
         </form>
         <div class="flex justify-center gap-4 mt-4">
-            <button onclick="adicionarBolsa()" 
-                class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition">
-                Adicionar
-            </button>
-            <button onclick="fecharModal('add')" 
-                class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition">
-                Cancelar
-            </button>
+            <button onclick="adicionarBolsa()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition">Adicionar</button>
+            <button onclick="fecharModal('add')" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition">Cancelar</button>
         </div>
     </dialog>
+
+    <dialog id="editModal" class="w-96 p-6 bg-white rounded-md shadow-lg">
+        <h2 class="text-xl font-bold mb-4 text-gray-800 text-center">Editar Bolsa</h2>
+        <form id="addForm" class="flex flex-col gap-4">
+            <input type="text" id="editIdInput" placeholder="ID" 
+                class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <input type="text" id="editStatusInput" placeholder="Status (Válida ou Inválida)" 
+                class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <input type="date" id="editDataInput" placeholder="Data" 
+                class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <input type="text" id="editVolumeInput" placeholder="Volume (ml)" 
+                class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <input type="text" id="editLocalInput" placeholder="Local de Coleta" 
+                class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <input type="text" id="editCpfDoadorInput" placeholder="CPF do Doador" 
+                class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+        </form>
+        <div class="flex justify-center gap-4 mt-4">
+            <button onclick="editarBolsa()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition">Editar</button>
+            <button onclick="fecharModal('edit')" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition">Cancelar</button>
+        </div>
+    </dialog>
+
+    <dialog id="deleteModal" class="w-96 p-6 bg-white rounded-md shadow-lg">
+        <h2 class="text-xl font-bold mb-4 text-gray-800 text-center">Remover Bolsa</h2>
+        <form id="deleteForm" class="flex flex-col gap-4">
+            <input type="text" id="deleteIdInput" placeholder="Id da Bolsa" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+        </form>
+        <div class="flex justify-center gap-4 mt-4">
+            <button onclick="deletarBolsa()" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition">Remover</button>
+            <button onclick="fecharModal('delete')" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded transition">Cancelar</button>
+        </div>
+    </dialog>
+
 
     <script src="/js/bolsas.js"></script>
 </body>
