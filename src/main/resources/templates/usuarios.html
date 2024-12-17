@@ -9,77 +9,95 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="flex flex-col items-center justify-center bg-[#2b3137]">
-    <!-- Navbar -->
-    <nav class="border-b-2 border-white text-white flex items-center justify-center h-18 w-full bg-gray-600">
-        <a href="/pages/usuarios" class="font-bold mx-8 p-4 hover:border-2 hover:border-gray-700 rounded transition-all">👨‍💼 Usuários</a>
-        <a href="/pages/doadores" class="font-bold mx-8 p-4 hover:border-2 hover:border-gray-700 rounded transition-all">🩸 Doadores</a>
-        <a href="/pages/bolsas" class="font-bold mx-8 p-4 hover:border-2 hover:border-gray-700 rounded transition-all">💉 Bolsas</a>
-        <a href="/pages/login" class="font-bold mx-8 p-4 hover:border-2 hover:border-gray-700 rounded transition-all">🔐 Login</a>
-        <a href="/" class="font-bold mx-8 p-4 hover:border-2 hover:border-gray-700 rounded transition-all">🚪 Sair</a>
+<body class="bg-gray-100 text-gray-900 font-sans">
+    <nav class="bg-red-600 text-white shadow-md">
+        <ul class="flex justify-center space-x-8 p-4">
+            <li>
+                <a href="/pages/usuarios" class="hover:text-gray-300 font-medium transition">Usuários</a>
+            </li>
+            <li>
+                <a href="/pages/doadores" class="hover:text-gray-300 font-medium transition">Doadores</a>
+            </li>
+            <li>
+                <a href="/pages/bolsas" class="hover:text-gray-300 font-medium transition">Bolsas</a>
+            </li>
+            <li>
+                <a href="/pages/login" class="hover:text-gray-300 font-medium transition">Login</a>
+            </li>
+            <li>
+                <a href="/" class="hover:text-gray-300 font-medium transition">Sair</a>
+            </li>
+        </ul>
     </nav>
 
-    <!-- Título Principal -->
-    <h1 class="text-3xl font-bold my-4 text-white">Sistema de Gerenciamento de Usuários 👨‍💼</h1>
+    <main class="flex flex-col items-center mt-12">
+        <h1 class="text-3xl font-bold my-4 text-gray-800">Sistema de Gerenciamento de Usuários</h1>
 
-    <!-- Container da Lista -->
-    <h2 class="text-xl font-bold text-white">Usuários Cadastrados</h2>
-    <div id="usuarios-container" class="my-2" hx-get="/pages/fragment/lista-usuarios" hx-trigger="load" hx-swap="innerHTML"></div>
+        <h2 class="text-xl font-bold text-gray-800">Usuários Cadastrados</h2>
+        <div id="usuarios-container" class="my-2 bg-white shadow-md p-6 rounded w-full max-w-lg" hx-get="/pages/fragment/lista-usuarios" hx-trigger="load" hx-swap="innerHTML">
+            <p class="text-center text-gray-600">Carregando dados...</p>
+        </div>
 
-    <!-- Botões de Ação -->
-    <div class="flex flex-col justify-center items-center w-80 my-2">
-        <button onclick="abrirModal('add')" class="border-2 bg-green-700 rounded p-2 my-2 w-full text-white font-bold">Adicionar Usuário</button>
-        <button onclick="abrirModal('edit')" class="border-2 bg-yellow-700 rounded p-2 my-2 w-full text-white font-bold">Editar Usuário</button>
-        <button onclick="abrirModal('delete')" class="border-2 bg-red-700 rounded p-2 my-2 w-full text-white font-bold">Remover Usuário</button>
-    </div>
+        <div class="flex flex-col gap-4 mt-6 w-full max-w-xs">
+            <button onclick="abrirModal('add')" 
+                class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded transition">
+                ➕ Adicionar Usuário
+            </button>
+            <button onclick="abrirModal('edit')" 
+                class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 rounded transition">
+                ✏️ Editar Usuário
+            </button>
+            <button onclick="abrirModal('delete')" 
+                class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 rounded transition">
+                ❌ Remover Usuário
+            </button>
+        </div>
+    </main>
 
-    <!-- Modal de Adicionar Usuário -->
-    <dialog id="addModal" class="w-96 h-auto flex-col p-4 rounded bg-gray-800">
-        <h2 class="text-xl font-bold mb-4 text-white">Adicionar Novo Usuário</h2>
-        <form id="addForm" class="flex flex-col gap-2">
-            <input type="text" id="cpfInput" placeholder="CPF" class="border p-2 rounded" required>
-            <input type="text" id="nomeInput" placeholder="Nome" class="border p-2 rounded" required>
-            <input type="email" id="emailInput" placeholder="E-mail" class="border p-2 rounded" required>
-            <input type="password" id="senhaInput" placeholder="Senha" class="border p-2 rounded" required>
-            <select id="cargoInput" class="border p-2 rounded" required>
+    <dialog id="addModal" class="w-96 p-6 bg-white rounded-md shadow-lg">
+        <h2 class="text-xl font-bold mb-4 text-gray-800 text-center">Adicionar Novo Usuário</h2>
+        <form id="addForm" class="flex flex-col gap-4">
+            <input type="text" id="cpfInput" placeholder="CPF" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <input type="text" id="nomeInput" placeholder="Nome" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <input type="email" id="emailInput" placeholder="E-mail" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <input type="password" id="senhaInput" placeholder="Senha" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <select id="cargoInput" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
                 <option value="">Selecione o Cargo</option>
                 <option value="ADMIN">Administrador</option>
                 <option value="USUARIO">Usuário</option>
             </select>
         </form>
         <div class="flex justify-center gap-4 mt-4">
-            <button onclick="adicionarUsuario()" class="border-2 bg-green-700 rounded p-2 text-white font-bold">Adicionar</button>
-            <button onclick="fecharModal('add')" class="border-2 bg-red-700 rounded p-2 text-white font-bold">Cancelar</button>
+            <button onclick="adicionarUsuario()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition">Adicionar</button>
+            <button onclick="fecharModal('add')" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition">Cancelar</button>
         </div>
     </dialog>
 
-    <!-- Modal de Editar Usuário -->
-    <dialog id="editModal" class="w-96 h-auto flex-col p-4 rounded bg-gray-800">
-        <h2 class="text-xl font-bold mb-4 text-white">Editar Usuário</h2>
-        <form id="editForm" class="flex flex-col gap-2">
-            <input type="text" id="editCpfInput" placeholder="CPF" class="border p-2 rounded" required>
-            <input type="text" id="editNomeInput" placeholder="Nome" class="border p-2 rounded">
-            <input type="email" id="editEmailInput" placeholder="E-mail" class="border p-2 rounded">
-            <select id="editCargoInput" class="border p-2 rounded">
+    <dialog id="editModal" class="w-96 p-6 bg-white rounded-md shadow-lg">
+        <h2 class="text-xl font-bold mb-4 text-gray-800 text-center">Editar Usuário</h2>
+        <form id="editForm" class="flex flex-col gap-4">
+            <input type="text" id="editCpfInput" placeholder="CPF" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <input type="text" id="editNomeInput" placeholder="Nome" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500">
+            <input type="email" id="editEmailInput" placeholder="E-mail" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500">
+            <select id="editCargoInput" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500">
                 <option value="ADMIN">Administrador</option>
                 <option value="USUARIO">Usuário</option>
             </select>
         </form>
         <div class="flex justify-center gap-4 mt-4">
-            <button onclick="editarUsuario()" class="border-2 bg-yellow-700 rounded p-2 text-white font-bold">Salvar Alterações</button>
-            <button onclick="fecharModal('edit')" class="border-2 bg-red-700 rounded p-2 text-white font-bold">Cancelar</button>
+            <button onclick="editarUsuario()" class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded transition">Salvar Alterações</button>
+            <button onclick="fecharModal('edit')" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition">Cancelar</button>
         </div>
     </dialog>
 
-    <!-- Modal de Remover Usuário -->
-    <dialog id="deleteModal" class="w-96 h-auto flex-col p-4 rounded bg-gray-800">
-        <h2 class="text-xl font-bold mb-4 text-white">Remover Usuário</h2>
-        <form id="deleteForm" class="flex flex-col gap-2">
-            <input type="text" id="deleteCpfInput" placeholder="CPF do Usuário" class="border p-2 rounded" required>
+    <dialog id="deleteModal" class="w-96 p-6 bg-white rounded-md shadow-lg">
+        <h2 class="text-xl font-bold mb-4 text-gray-800 text-center">Remover Usuário</h2>
+        <form id="deleteForm" class="flex flex-col gap-4">
+            <input type="text" id="deleteCpfInput" placeholder="CPF do Usuário" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
         </form>
         <div class="flex justify-center gap-4 mt-4">
-            <button onclick="deletarUsuario()" class="border-2 bg-red-700 rounded p-2 text-white font-bold">Remover</button>
-            <button onclick="fecharModal('delete')" class="border-2 bg-gray-500 rounded p-2 text-white font-bold">Cancelar</button>
+            <button onclick="deletarUsuario()" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition">Remover</button>
+            <button onclick="fecharModal('delete')" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded transition">Cancelar</button>
         </div>
     </dialog>
 

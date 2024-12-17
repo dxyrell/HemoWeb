@@ -4,34 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HemoWeb - Página Inicial</title>
-    <!-- Link para o CSS corrigido -->
-    <link rel="stylesheet" th:href="@{/css/globals.css}">
+    <script src="https://unpkg.com/htmx.org"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <!-- Cabeçalho -->
-    <header>
-        <h1>Bem-vindo ao HemoWeb</h1>
+<body class="bg-gray-100 text-gray-900 font-sans">
+
+    <header class="bg-red-600 text-white p-6 text-center">
+        <h1 class="text-3xl font-bold">Bem-vindo ao HemoWeb</h1>
     </header>
 
-    <!-- Menu de Navegação -->
-    <nav>
-        <ul>
-            <li><a th:href="@{/pages/usuarios}">Gerenciar Usuários</a></li>
-            <li><a th:href="@{/pages/doadores}">Gerenciar Doadores</a></li>
-            <li><a th:href="@{/pages/bolsas}">Gerenciar Bolsas de Sangue</a></li>
+    <nav class="bg-white shadow-md">
+        <ul class="flex justify-center space-x-8 p-4">
+            <li>
+                <a th:href="@{/pages/usuarios}" 
+                   class="text-red-600 hover:text-red-800 font-medium transition">
+                   Gerenciar Usuários
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/pages/doadores}" 
+                   class="text-red-600 hover:text-red-800 font-medium transition">
+                   Gerenciar Doadores
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/pages/bolsas}" 
+                   class="text-red-600 hover:text-red-800 font-medium transition">
+                   Gerenciar Bolsas de Sangue
+                </a>
+            </li>
         </ul>
     </nav>
 
-    <!-- Conteúdo Principal -->
-    <main>
-        <section>
-            <h2>Sobre o Sistema</h2>
-            <p>O HemoWeb é um sistema para gestão de usuários, doadores e bolsas de sangue, facilitando o controle e organização das informações.</p>
+    <main class="container mx-auto mt-8 px-6">
+        <section class="bg-white shadow-lg p-6 rounded-md">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">Sobre o Sistema</h2>
+            <p class="text-gray-600 leading-relaxed">
+                O HemoWeb é um sistema para gestão de usuários, doadores e bolsas de sangue, 
+                facilitando o controle e organização das informações.
+            </p>
         </section>
     </main>
 
-    <!-- Rodapé -->
-    <footer>
+    <footer class="bg-gray-800 text-white text-center p-4 mt-8">
         <p>&copy; 2024 HemoWeb. Todos os direitos reservados.</p>
     </footer>
 </body>

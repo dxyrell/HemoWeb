@@ -9,42 +9,75 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="flex flex-col items-center justify-center bg-[#2b3137]">
-    <nav class="border-b-2 border-white text-white flex items-center justify-center h-18 w-full bg-gray-600">
-        <a href="/pages/doadores" class="font-bold mx-8 p-4 hover:border-2 hover:border-gray-700 rounded transition-all">🩸 Doadores</a>
-        <a href="/pages/bolsas" class="font-bold mx-8 p-4 hover:border-2 hover:border-gray-700 rounded transition-all">💉 Bolsas</a>
-        <a href="/pages/login" class="font-bold mx-8 p-4 hover:border-2 hover:border-gray-700 rounded transition-all">🔐 Login</a>
-        <a href="/" class="font-bold mx-8 p-4 hover:border-2 hover:border-gray-700 rounded transition-all">🚪 Sair</a>
+<body class="bg-gray-100 text-gray-900 font-sans">
+    <nav class="bg-red-600 text-white shadow-md">
+        <ul class="flex justify-center space-x-8 p-4">
+            <li>
+                <a href="/pages/usuarios" class="hover:text-gray-300 font-medium transition">Usuários</a>
+            </li>
+            <li>
+                <a href="/pages/doadores" class="hover:text-gray-300 font-medium transition">Doadores</a>
+            </li>
+            <li>
+                <a href="/pages/bolsas" class="hover:text-gray-300 font-medium transition">Bolsas</a>
+            </li>
+            <li>
+                <a href="/pages/login" class="hover:text-gray-300 font-medium transition">Login</a>
+            </li>
+            <li>
+                <a href="/" class="hover:text-gray-300 font-medium transition">Sair</a>
+            </li>
+        </ul>
     </nav>
 
-    <h1 class="text-3xl font-bold my-4 text-white">Sistema de Gerenciamento de Bolsas de Sangue 💉</h1>
+    <main class="flex flex-col items-center mt-12">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800">Sistema de Gerenciamento de Bolsas de Sangue</h1>
 
-    <div id="bolsas-container" class="my-2" hx-get="/pages/fragment/lista-bolsas" hx-trigger="load" hx-swap="innerHTML"></div>
+        <div id="bolsas-container" 
+            class="my-2 bg-white shadow-md p-6 rounded w-full max-w-lg"
+            hx-get="/pages/fragment/lista-bolsas" 
+            hx-trigger="load" 
+            hx-swap="innerHTML">
+            <p class="text-center text-gray-600">Carregando dados...</p>
+        </div>
 
-    <div class="flex flex-col justify-center items-center w-80 my-2">
-        <button onclick="abrirModal('add')" class="border-2 bg-green-700 rounded p-2 my-2 w-full text-white font-bold">
-            Adicionar Bolsa
-        </button>
-        <button onclick="abrirModal('edit')" class="border-2 bg-yellow-700 rounded p-2 my-2 w-full text-white font-bold">
-            Editar Bolsa
-        </button>
-        <button onclick="abrirModal('delete')" class="border-2 bg-red-700 rounded p-2 my-2 w-full text-white font-bold">
-            Remover Bolsa
-        </button>
-    </div>
+        <div class="flex flex-col gap-4 mt-6 w-full max-w-xs">
+            <button onclick="abrirModal('add')" 
+                class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded transition">
+                ➕ Adicionar Bolsa
+            </button>
+            <button onclick="abrirModal('edit')" 
+                class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 rounded transition">
+                ✏️ Editar Bolsa
+            </button>
+            <button onclick="abrirModal('delete')" 
+                class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 rounded transition">
+                ❌ Remover Bolsa
+            </button>
+        </div>
+    </main>
 
-    <!-- Modais -->
-    <dialog id="addModal" class="w-96 p-4 rounded bg-gray-800">
-        <h2 class="text-xl font-bold mb-4 text-white">Adicionar Nova Bolsa</h2>
-        <form id="addForm" class="flex flex-col gap-2">
-            <input type="text" placeholder="Data" class="border p-2 rounded" required>
-            <input type="text" placeholder="Volume (ml)" class="border p-2 rounded" required>
-            <input type="text" placeholder="Local de Coleta" class="border p-2 rounded" required>
-            <input type="text" placeholder="CPF do Doador" class="border p-2 rounded" required>
+    <dialog id="addModal" class="w-96 p-6 bg-white rounded-md shadow-lg">
+        <h2 class="text-xl font-bold mb-4 text-gray-800 text-center">Adicionar Nova Bolsa</h2>
+        <form id="addForm" class="flex flex-col gap-4">
+            <input type="date" placeholder="Data" 
+                class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <input type="text" placeholder="Volume (ml)" 
+                class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <input type="text" placeholder="Local de Coleta" 
+                class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <input type="text" placeholder="CPF do Doador" 
+                class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-500" required>
         </form>
         <div class="flex justify-center gap-4 mt-4">
-            <button onclick="adicionarBolsa()" class="bg-green-700 p-2 text-white font-bold rounded">Adicionar</button>
-            <button onclick="fecharModal('add')" class="bg-red-700 p-2 text-white font-bold rounded">Cancelar</button>
+            <button onclick="adicionarBolsa()" 
+                class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition">
+                Adicionar
+            </button>
+            <button onclick="fecharModal('add')" 
+                class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition">
+                Cancelar
+            </button>
         </div>
     </dialog>
 

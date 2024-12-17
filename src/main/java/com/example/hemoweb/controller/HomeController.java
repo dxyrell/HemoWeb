@@ -109,4 +109,10 @@ public class HomeController {
         model.addAttribute("bolsas", pageBolsas.getContent());
         return "fragment/lista-bolsas";
     }
+
+    // Página de usuários
+    @GetMapping("/pages/login")
+    public String retornarPaginaLogin() {
+        return "login"; // Aponta para templates/login.html
+    }
 }
