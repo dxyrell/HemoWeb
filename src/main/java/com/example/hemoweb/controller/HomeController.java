@@ -38,7 +38,7 @@ public class HomeController {
     // Página de doadores
     @GetMapping("/pages/doadores")
     public String retornarPaginaDoadores() {
-        return "doadores/doadores";
+        return "doadores"; // Aponta para templates/doadores.html
     }
 
     // Lista de doadores com paginação
@@ -63,7 +63,7 @@ public class HomeController {
     // Página de usuários
     @GetMapping("/pages/usuarios")
     public String retornarPaginaUsuarios() {
-        return "usuarios/usuarios";
+        return "usuarios"; // Aponta para templates/usuarios.html
     }
 
     // Lista de usuários com paginação
@@ -88,7 +88,7 @@ public class HomeController {
     // Página de bolsas
     @GetMapping("/pages/bolsas")
     public String retornarPaginaBolsas() {
-        return "bolsas/bolsas";
+        return "bolsas"; // Aponta para templates/bolsas.html
     }
 
     // Lista de bolsas com paginação
