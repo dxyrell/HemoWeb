@@ -66,12 +66,12 @@ async function deletarUsuario() {
 }
 
 async function editarUsuario() {
-    // Captura os dados do formulário de edição
-    const cpf = document.querySelector("#editCpfInput").value;
+    const cpf = parseInt(document.querySelector("#editCpfInput").value);
     const data = {
         nome: document.querySelector("#editNomeInput").value,
         email: document.querySelector("#editEmailInput").value,
-        cargo: document.querySelector("#editCargoInput").value
+        cargo: document.querySelector("#editCargoInput").value,
+        senha: document.querySelector("#editSenhaInput").value // Adiciona a senha
     };
 
     try {
@@ -91,6 +91,7 @@ async function editarUsuario() {
     fecharModal('edit');
     await carregarUsuarios();
 }
+
 
 function zerarInputs() {
     // Limpa todos os inputs dos modais

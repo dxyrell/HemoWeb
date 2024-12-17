@@ -43,7 +43,10 @@ public class UsuarioController {
     // Editar usuário pelo CPF
     @PutMapping("/{cpf}")
     public ResponseEntity<Usuario> editarUsuario(@PathVariable Integer cpf, @RequestBody Usuario usuario) {
+        System.out.println("Recebido CPF: " + cpf);
+        System.out.println("Recebido Dados: " + usuario);
         Usuario usuarioEditado = usuarioService.editarUsuario(cpf, usuario);
         return ResponseEntity.ok(usuarioEditado);
     }
+    
 }
