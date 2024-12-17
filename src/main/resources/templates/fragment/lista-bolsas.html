@@ -1,0 +1,37 @@
+<!-- Arquivo: fragments/lista-bolsas.html -->
+<table class="border-collapse border-2 border-white w-full text-sm">
+    <thead>
+        <tr class="bg-gray-800 text-white">
+            <th class="border-2 border-white px-4 py-2 text-center">ID</th>
+            <th class="border-2 border-white px-4 py-2 text-center">Status</th>
+            <th class="border-2 border-white px-4 py-2 text-center">Data</th>
+            <th class="border-2 border-white px-4 py-2 text-center">Volume</th>
+            <th class="border-2 border-white px-4 py-2 text-center">Local</th>
+            <th class="border-2 border-white px-4 py-2 text-center">CPF do Doador</th>
+            <th class="border-2 border-white px-4 py-2 text-center">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="bolsa : ${bolsas}" class="hover:bg-gray-500 odd:bg-gray-700 text-white">
+            <td th:text="${bolsa.id}" class="border-2 border-white px-4 py-2 text-center"></td>
+            <td th:text="${bolsa.status ? 'Disponível' : 'Indisponível'}" class="border-2 border-white px-4 py-2 text-center"></td>
+            <td th:text="${bolsa.data}" class="border-2 border-white px-4 py-2 text-center"></td>
+            <td th:text="${bolsa.volume}" class="border-2 border-white px-4 py-2 text-center"></td>
+            <td th:text="${bolsa.local}" class="border-2 border-white px-4 py-2 text-center"></td>
+            <td th:text="${bolsa.cpfDoador}" class="border-2 border-white px-4 py-2 text-center"></td>
+            <td class="border-2 border-white px-4 py-2 text-center">
+                <!-- Editar -->
+                <a th:href="@{/bolsas/alterar/{id}(id=${bolsa.id})}" class="text-blue-500 hover:underline mr-4">
+                    Editar
+                </a>
+                <!-- Remover -->
+                <form th:action="@{/bolsas/remover}" method="post" style="display: inline;">
+                    <input type="hidden" name="id" th:value="${bolsa.id}" />
+                    <button type="submit" class="text-red-500 hover:underline bg-transparent border-none cursor-pointer">
+                        Remover
+                    </button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>

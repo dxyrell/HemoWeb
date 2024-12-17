@@ -1,26 +1,41 @@
 package com.example.hemoweb.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "doadores")
 public class Doador {
 
     @Id
-    private String cpf; // CPF como chave primária
+    @Column(name = "cpf", nullable = false, unique = true)
+    private Integer cpf; // CPF como chave primária
+
+    @Column(name = "nome", nullable = false, length = 100)
     private String nome;
-    private String tipoSanguineo;
-    private String telefone;
+
+    @Column(name = "email", nullable = false, length = 100, unique = true)
     private String email;
-    private LocalDate dataNascimento;
+
+    @Column(name = "telefone", nullable = false, length = 15)
+    private String telefone;
+
+    @Column(name = "endereco", length = 150)
+    private String endereco;
+
+    @Column(name = "nascimento", nullable = false)
+    private LocalDate nascimento;
+
+    @Column(name = "tipo_sanguineo", nullable = false, length = 3)
+    private String tipoSanguineo;
 
     // Getters e Setters
-    public String getCpf() {
+
+    public Integer getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(Integer cpf) {
         this.cpf = cpf;
     }
 
@@ -32,12 +47,12 @@ public class Doador {
         this.nome = nome;
     }
 
-    public String getTipoSanguineo() {
-        return tipoSanguineo;
+    public String getEmail() {
+        return email;
     }
 
-    public void setTipoSanguineo(String tipoSanguineo) {
-        this.tipoSanguineo = tipoSanguineo;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getTelefone() {
@@ -48,31 +63,40 @@ public class Doador {
         this.telefone = telefone;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
+    public LocalDate getNascimento() {
+        return nascimento;
     }
 
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    public void setNascimento(LocalDate nascimento) {
+        this.nascimento = nascimento;
+    }
+
+    public String getTipoSanguineo() {
+        return tipoSanguineo;
+    }
+
+    public void setTipoSanguineo(String tipoSanguineo) {
+        this.tipoSanguineo = tipoSanguineo;
     }
 
     @Override
     public String toString() {
         return "Doador{" +
-                "cpf='" + cpf + '\'' +
+                "cpf=" + cpf +
                 ", nome='" + nome + '\'' +
-                ", tipoSanguineo='" + tipoSanguineo + '\'' +
-                ", telefone='" + telefone + '\'' +
                 ", email='" + email + '\'' +
-                ", dataNascimento=" + dataNascimento +
+                ", telefone='" + telefone + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", nascimento=" + nascimento +
+                ", tipoSanguineo='" + tipoSanguineo + '\'' +
                 '}';
     }
 }

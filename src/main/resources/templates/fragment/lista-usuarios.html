@@ -1,0 +1,77 @@
+<!-- Arquivo: fragments/lista-usuarios.html -->
+<table class="border-collapse border-2 border-white w-full text-sm">
+    <thead>
+        <tr class="bg-gray-800 text-white">
+            <th class="border-2 border-white px-4 py-2 text-center">CPF</th>
+            <th class="border-2 border-white px-4 py-2 text-center">Nome</th>
+            <th class="border-2 border-white px-4 py-2 text-center">E-mail</th>
+            <th class="border-2 border-white px-4 py-2 text-center">Cargo</th>
+            <th class="border-2 border-white px-4 py-2 text-center">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Itera sobre a lista de usuários -->
+        <tr th:each="usuario : ${usuarios}" class="hover:bg-gray-500 odd:bg-gray-700 text-white">
+            <td th:text="${usuario.cpf}" class="border-2 border-white px-4 py-2 text-center"></td>
+            <td th:text="${usuario.nome}" class="border-2 border-white px-4 py-2 text-center"></td>
+            <td th:text="${usuario.email}" class="border-2 border-white px-4 py-2 text-center"></td>
+            <td th:text="${usuario.cargo}" class="border-2 border-white px-4 py-2 text-center"></td>
+            <td class="border-2 border-white px-4 py-2 text-center">
+                <!-- Botão para editar -->
+                <a th:href="@{/usuarios/alterar/{cpf}(cpf=${usuario.cpf})}"
+                   class="text-blue-500 hover:underline mr-4">
+                    Editar
+                </a>
+                <!-- Botão para remover -->
+                <form th:action="@{/usuarios/remover}" method="post" style="display: inline;">
+                    <input type="hidden" name="cpf" th:value="${usuario.cpf}" />
+                    <button type="submit" class="text-red-500 hover:underline bg-transparent border-none cursor-pointer">
+                        Remover
+                    </button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Navegação de página -->
+<div class="text-white my-2 flex justify-center items-center gap-4">
+    <!-- Página Anterior -->
+    <a th:if="${pageUsuarios.hasPrevious()}" 
+       class="font-bold cursor-pointer text-blue-400 hover:text-blue-600"
+       onclick="carregarPaginaAnterior()">⏪ Anterior</a>
+
+    <!-- Página Atual -->
+    <span>Página <span th:text="${pageUsuarios.number + 1}"></span> de 
+        <span th:text="${pageUsuarios.totalPages}"></span>
+    </span>
+
+    <!-- Próxima Página -->
+    <a th:if="${pageUsuarios.hasNext()}" 
+       class="font-bold cursor-pointer text-blue-400 hover:text-blue-600"
+       onclick="carregarProximaPagina()">Próxima ⏩</a>
+
+    <!-- URLs das páginas -->
+    <div th:text="${nextPageUrl}" id="nextPageUrl" class="hidden"></div>
+    <div th:text="${previousPageUrl}" id="previousPageUrl" class="hidden"></div>
+</div>
+
+<!-- Script para Navegação com HTMX -->
+<script src="https://unpkg.com/htmx.org"></script>
+<script>
+    async function carregarProximaPagina() {
+        const url = document.getElementById("nextPageUrl").textContent;
+
+        htmx.ajax('GET', url, {
+            target: '#usuarios-container'  // Substitui o conteúdo do container
+        });
+    }
+
+    async function carregarPaginaAnterior() {
+        const url = document.getElementById("previousPageUrl").textContent;
+
+        htmx.ajax('GET', url, {
+            target: '#usuarios-container'  // Substitui o conteúdo do container
+        });
+    }
+</script>

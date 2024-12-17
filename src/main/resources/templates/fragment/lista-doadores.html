@@ -1,0 +1,39 @@
+<!-- Arquivo: fragments/lista-doadores.html -->
+<table class="border-collapse border-2 border-white w-full text-sm">
+    <thead>
+        <tr class="bg-gray-800 text-white">
+            <th class="border-2 border-white px-4 py-2 text-center">CPF</th>
+            <th class="border-2 border-white px-4 py-2 text-center">Nome</th>
+            <th class="border-2 border-white px-4 py-2 text-center">E-mail</th>
+            <th class="border-2 border-white px-4 py-2 text-center">Telefone</th>
+            <th class="border-2 border-white px-4 py-2 text-center">Endereço</th>
+            <th class="border-2 border-white px-4 py-2 text-center">Nascimento</th>
+            <th class="border-2 border-white px-4 py-2 text-center">Tipo Sanguíneo</th>
+            <th class="border-2 border-white px-4 py-2 text-center">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="doador : ${doadores}" class="hover:bg-gray-500 odd:bg-gray-700 text-white">
+            <td th:text="${doador.cpf}" class="border-2 border-white px-4 py-2 text-center"></td>
+            <td th:text="${doador.nome}" class="border-2 border-white px-4 py-2 text-center"></td>
+            <td th:text="${doador.email}" class="border-2 border-white px-4 py-2 text-center"></td>
+            <td th:text="${doador.telefone}" class="border-2 border-white px-4 py-2 text-center"></td>
+            <td th:text="${doador.endereco}" class="border-2 border-white px-4 py-2 text-center"></td>
+            <td th:text="${doador.nascimento}" class="border-2 border-white px-4 py-2 text-center"></td>
+            <td th:text="${doador.tipoSanguineo}" class="border-2 border-white px-4 py-2 text-center"></td>
+            <td class="border-2 border-white px-4 py-2 text-center">
+                <!-- Editar -->
+                <a th:href="@{/doadores/alterar/{cpf}(cpf=${doador.cpf})}" class="text-blue-500 hover:underline mr-4">
+                    Editar
+                </a>
+                <!-- Remover -->
+                <form th:action="@{/doadores/remover}" method="post" style="display: inline;">
+                    <input type="hidden" name="cpf" th:value="${doador.cpf}" />
+                    <button type="submit" class="text-red-500 hover:underline bg-transparent border-none cursor-pointer">
+                        Remover
+                    </button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>

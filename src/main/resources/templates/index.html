@@ -1,24 +1,30 @@
 <!DOCTYPE html>
-<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-    <title>Página Principal</title>
-  </head>
-  <body>
-    <!-- Conteúdo Principal -->
-    <main layout:fragment="conteudo" id="main" class="flex flex-col align-middle justify-center w-full">
-      <h1 class="text-2xl md:text-4xl text-center">Bem-vindo ao Sistema HemoWeb</h1>
-      <p class="text-lg text-center mt-4 text-gray-600">
-        Gerencie doadores, bolsas de sangue e relatórios de forma eficiente e organizada.
-      </p>
-      <img th:src="@{/images/doesangue.png}" class="mt-10 mx-auto block h-64 w-64" alt="Logo HemoWeb" />
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HemoWeb - Página Inicial</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo ao HemoWeb</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/usuarios">Gerenciar Usuários</a></li>
+            <li><a href="/doadores">Gerenciar Doadores</a></li>
+            <li><a href="/bolsas">Gerenciar Bolsas de Sangue</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <h2>Sobre o Sistema</h2>
+            <p>O HemoWeb é um sistema para gestão de usuários, doadores e bolsas de sangue, facilitando o controle e organização das informações.</p>
+        </section>
     </main>
-    <!-- Fim do Conteúdo Principal -->
-
-    <!-- Scripts adicionais, caso necessário -->
-    <!-- <th:block layout:fragment="scripts">
-        <script src="../static/js/index.js" th:src="@{/js/index.js}"></script>
-    </th:block> -->
-  </body>
+    <footer>
+        <p>&copy; 2024 HemoWeb. Todos os direitos reservados.</p>
+    </footer>
+</body>
 </html>

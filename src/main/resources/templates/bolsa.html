@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bolsas de Sangue</title>
+    <script src="https://unpkg.com/htmx.org"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex flex-col items-center justify-center bg-[#2b3137]">
+    <nav class="border-b-2 border-white text-white flex items-center justify-center h-18 w-full bg-gray-600">
+        <a href="/pages/doadores" class="font-bold mx-8 p-4 hover:border-2 hover:border-gray-700 rounded transition-all">🩸 Doadores</a>
+        <a href="/pages/bolsas" class="font-bold mx-8 p-4 hover:border-2 hover:border-gray-700 rounded transition-all">💉 Bolsas</a>
+        <a href="/pages/login" class="font-bold mx-8 p-4 hover:border-2 hover:border-gray-700 rounded transition-all">🔐 Login</a>
+        <a href="/" class="font-bold mx-8 p-4 hover:border-2 hover:border-gray-700 rounded transition-all">🚪 Sair</a>
+    </nav>
+
+    <h1 class="text-3xl font-bold my-4 text-white">Sistema de Gerenciamento de Bolsas de Sangue 💉</h1>
+
+    <div id="bolsas-container" class="my-2" hx-get="/pages/fragment/lista-bolsas" hx-trigger="load" hx-swap="innerHTML"></div>
+
+    <div class="flex flex-col justify-center items-center w-80 my-2">
+        <button onclick="abrirModal('add')" class="border-2 bg-green-700 rounded p-2 my-2 w-full text-white font-bold">
+            Adicionar Bolsa
+        </button>
+        <button onclick="abrirModal('edit')" class="border-2 bg-yellow-700 rounded p-2 my-2 w-full text-white font-bold">
+            Editar Bolsa
+        </button>
+        <button onclick="abrirModal('delete')" class="border-2 bg-red-700 rounded p-2 my-2 w-full text-white font-bold">
+            Remover Bolsa
+        </button>
+    </div>
+
+    <!-- Modais -->
+    <dialog id="addModal" class="w-96 p-4 rounded bg-gray-800">
+        <h2 class="text-xl font-bold mb-4 text-white">Adicionar Nova Bolsa</h2>
+        <form id="addForm" class="flex flex-col gap-2">
+            <input type="text" placeholder="Data" class="border p-2 rounded" required>
+            <input type="text" placeholder="Volume (ml)" class="border p-2 rounded" required>
+            <input type="text" placeholder="Local de Coleta" class="border p-2 rounded" required>
+            <input type="text" placeholder="CPF do Doador" class="border p-2 rounded" required>
+        </form>
+        <div class="flex justify-center gap-4 mt-4">
+            <button onclick="adicionarBolsa()" class="bg-green-700 p-2 text-white font-bold rounded">Adicionar</button>
+            <button onclick="fecharModal('add')" class="bg-red-700 p-2 text-white font-bold rounded">Cancelar</button>
+        </div>
+    </dialog>
+
+    <script src="/js/bolsas.js"></script>
+</body>
+
+</html>
